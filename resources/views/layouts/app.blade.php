@@ -34,7 +34,7 @@
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body class="bg-gray-100" x-data="{ sidebarOpen: true }">
+<body class="bg-gray-100" x-data="{ sidebarOpen: window.innerWidth >= 768, isMobile : window.innerWidth < 768}">
     <div class="flex flex-col md:flex-row min-h-screen">
         <!-- Sidebar -->
         <aside 
@@ -42,7 +42,7 @@
             :class="{'translate-x-0 w-64': sidebarOpen, '-translate-x-full w-0 hidden': !sidebarOpen}"
         >
             <div class="flex items-center justify-center h-16 border-b border-gray-200">
-                <h1 class="text-xl font-bold text-gray-800">NOTUS NEXTJS</h1>
+                <h1 class="text-xl font-bold text-gray-800">LARAVEL</h1>
             </div>
             <nav class="flex-1 overflow-y-auto p-4">
                 <a href="#" class="flex items-center px-4 py-3 text-gray-700 bg-gray-200 rounded-lg">
@@ -80,8 +80,10 @@
                 <div class="max-w-7xl mx-auto px-4">
                     <div class="flex justify-between h-16">
                         <!-- Left side -->
-                        <div class="flex items-center">
-                            <!-- Sidebar Toggle Button -->
+                        <div class="flex items-center"
+                            :class="{'hidden': isMobile}"
+                        >
+                            <!-- Sidebar Toggle Button --> 
                             <button 
                                 @click="sidebarOpen = !sidebarOpen" 
                                 class="mr-4 p-2 rounded-lg text-gray-600 hover:bg-gray-100 focus:outline-none transition-colors duration-200"
@@ -96,6 +98,12 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                                 </svg>
                             </button>
+                        </div>
+
+                        <div class="flex items-center justify-start h-16 border-b border-gray-200"
+                            :class="{'hidden': !isMobile}"
+                        >
+                            <h1 class="text-xl font-bold text-gray-800">LARAVEL</h1>
                         </div>
 
                         <!-- Right side - Desktop -->
