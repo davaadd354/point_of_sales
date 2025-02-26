@@ -9,10 +9,27 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+    {{-- Select2 CSS --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    {{-- sweetalert2  --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    {{-- Select2 JS --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    {{-- sweetalert2  --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {{-- Font Awesome --}}
+    <script src="https://kit.fontawesome.com/db2715b540.js" crossorigin="anonymous"></script>
+
     <style>
         [x-cloak] { display: none !important; }
     </style>
@@ -157,6 +174,26 @@
             <div id="content" class="p-5">
                 {{ $slot }}
             </div>
+
+            <script>
+                $(document).ready(function () {
+                    // message
+                    var errorMessage = '{{ Session::get("error") }}';
+                    if (errorMessage) {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: errorMessage
+                        });
+                    }
+                    var successMessage = '{{ Session::get("success") }}';
+                    if (successMessage) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: successMessage
+                        });
+                    }
+                });
+            </script>
         </main>
     </div>
 </body>
