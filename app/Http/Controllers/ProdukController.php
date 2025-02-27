@@ -13,7 +13,14 @@ use Intervention\Image\ImageManagerStatic as IMG;
 class ProdukController extends Controller
 {
     public function getProduk(){
-        dd('hello world');
+        $data_produk = DB::table('produk')
+        ->select(
+            '*',
+            DB::raw('concat("' .url("/") .'", file_path, file_name) as url_gambar')
+        )
+        ->get();
+
+        dd($data_produk);
     }
 
     public function inputProduk(){
