@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SupplyerController;
 use App\Http\Controllers\WilayahController;
+use App\Http\Controllers\ProdukController;
 
 Route::get('/', function () {
     return redirect('dashboard');
@@ -26,6 +27,12 @@ Route::middleware('auth')->group(function () {
         Route::post('/edit', [SupplyerController::class, 'saveEditSupplier'])->name('saveEditSupplier');
         Route::post('/hapus', [SupplyerController::class, 'hapusSupplier'])->name('hapusSupplier');
     }); 
+
+    Route::prefix('produk')->group(function () {     
+        Route::get('/', [ProdukController::class, 'getProduk'])->name('getProduk');
+        Route::get('/input', [ProdukController::class, 'inputProduk'])->name('inputProduk');
+        Route::post('/input', [ProdukController::class, 'saveInputProduk'])->name('saveInputProduk');
+    });
     
 });
 
