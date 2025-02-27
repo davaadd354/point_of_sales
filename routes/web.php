@@ -28,10 +28,13 @@ Route::middleware('auth')->group(function () {
         Route::post('/hapus', [SupplyerController::class, 'hapusSupplier'])->name('hapusSupplier');
     }); 
 
-    Route::prefix('produk')->group(function () {     
+    Route::prefix('produk')->group(function () {       
         Route::get('/', [ProdukController::class, 'getProduk'])->name('getProduk');
         Route::get('/input', [ProdukController::class, 'inputProduk'])->name('inputProduk');
         Route::post('/input', [ProdukController::class, 'saveInputProduk'])->name('saveInputProduk');
+        Route::get('/edit', [ProdukController::class, 'editProduk'])->name('editProduk');
+        Route::post('/edit', [ProdukController::class, 'saveEditProduk'])->name('saveEditProduk');
+        Route::post('/hapus', [ProdukController::class, 'hapusProduk'])->name('hapusProduk');
     });
     
 });
