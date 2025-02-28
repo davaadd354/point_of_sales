@@ -77,7 +77,7 @@
         <main class="flex-1 transition-all duration-300 ease-in-out" :class="{'md:ml-64': sidebarOpen}">
             <!-- Responsive Navbar -->
             <nav class="bg-white shadow-lg mb-8" x-data="{ mobileMenuOpen: false, profileOpen: false }">
-                <div class="max-w-7xl mx-auto px-4">
+                <div class="max-w-6xl mx-auto px-4">
                     <div class="flex justify-between h-16">
                         <!-- Left side -->
                         <div class="flex items-center"
