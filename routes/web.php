@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SupplyerController;
 use App\Http\Controllers\WilayahController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\PengadaanProdukController;
 
 Route::get('/', function () {
     return redirect('dashboard');
@@ -35,6 +36,15 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit', [ProdukController::class, 'editProduk'])->name('editProduk');
         Route::post('/edit', [ProdukController::class, 'saveEditProduk'])->name('saveEditProduk');
         Route::post('/hapus', [ProdukController::class, 'hapusProduk'])->name('hapusProduk');
+    });
+
+    Route::prefix('pengadaan_produk')->group(function () {
+        Route::get('/', [PengadaanProdukController::class, 'getPengadaanProduk'])->name('getPengadaanProduk');
+        Route::get('/input', [PengadaanProdukController::class, 'inputPengadaanProduk'])->name('inputPengadaanProduk');
+        Route::post('/input', [PengadaanProdukController::class, 'saveInputPengadaanProduk'])->name('saveInputPengadaanProduk'); 
+        Route::get('/edit', [PengadaanProdukController::class, 'editPengadaanProduk'])->name('editPengadaanProduk');
+        Route::post('/edit', [PengadaanProdukController::class, 'saveEditPengadaanProduk'])->name('saveEditPengadaanProduk');
+        Route::post('/hapus', [PengadaanProdukController::class, 'hapusPengadaanProduk'])->name('hapusPengadaanProduk');
     });
     
 });
